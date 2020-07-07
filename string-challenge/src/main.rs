@@ -29,7 +29,7 @@ fn main() {
 }
 
 fn pig_latin(word: &str) -> String {
-    let vowels = vec!['a', 'e', 'i', 'o', 'u'];
+    let vowels: Vec<char> = vec!['a', 'e', 'i', 'o', 'u'];
     let mut char_iter = word.chars();
     let first_letter = char_iter.next().unwrap();
     if vowels.contains(
