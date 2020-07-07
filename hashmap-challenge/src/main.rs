@@ -29,12 +29,15 @@ fn main() {
                 "Sentence should be in the format 'Add [employer] to [department]' to add employee"
             );
             println!();
-            break;
         }
     }
 
     let mut v: Vec<_> = employee_registry.into_iter().collect();
-    v.sort_by(|x, y| y.0.cmp(&x.0));
+    v.sort_by(|x, y| y.1.cmp(&x.1));
+    v.reverse();
 
-    println!("{:?}", v[0]);
+    println!("Department ----- Employee");
+    for string in &v {
+        println!("{} -----  {}", string.1, string.0);
+    }
 }
