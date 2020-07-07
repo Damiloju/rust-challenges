@@ -23,7 +23,22 @@ fn main() {
             let employee: String = String::from(v.remove(1).to_lowercase());
             let department: String = String::from(v.remove(2).to_lowercase());
             employee_registry.entry(employee).or_insert(department);
-            println!("{:?}", employee_registry);
+            println!("Employee added successfully");
+            println!();
+            println!("Enter 2 to print the list of employees in the company ordered by department or any number to continue");
+            let mut choice = String::new(); // define a mutable variable using the mut keyword
+            io::stdin()
+                .read_line(&mut choice) // pass a reference to the guess variable using & and make it mutable because referenc are immutable by default
+                .expect("Failed to read line");
+            let choice: u32 = match choice.trim().parse() {
+                Ok(num) => num,
+                Err(_) => continue,
+            };
+            if choice == 2 {
+                break;
+            } else {
+                continue;
+            }
         } else {
             println!(
                 "Sentence should be in the format 'Add [employer] to [department]' to add employee"
@@ -36,8 +51,9 @@ fn main() {
     v.sort_by(|x, y| y.1.cmp(&x.1));
     v.reverse();
 
-    println!("Department ----- Employee");
+    println!();
+    println!("Department  Employee");
     for string in &v {
-        println!("{} -----  {}", string.1, string.0);
+        println!("{}  {}", string.1, string.0);
     }
 }
