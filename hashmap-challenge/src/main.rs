@@ -14,7 +14,7 @@ fn main() {
             .expect("Failed to read line");
         let user_word: String = match user_word.trim().parse() {
             Ok(word) => word,
-            Err(_) => continue,
+            Err(_) => break,
         };
 
         let mut v: Vec<&str> = user_word.split(' ').collect();
@@ -29,6 +29,12 @@ fn main() {
                 "Sentence should be in the format 'Add [employer] to [department]' to add employee"
             );
             println!();
+            break;
         }
     }
+
+    let mut v: Vec<_> = employee_registry.into_iter().collect();
+    v.sort_by(|x, y| y.0.cmp(&x.0));
+
+    println!("{:?}", v[0]);
 }
