@@ -7,7 +7,7 @@ fn main() {
     loop {
         let mut user_word = String::new(); // define a mutable variable using the mut keyword
         io::stdin()
-            .read_line(&mut user_word) // pass a reference to the guess variable using & and make it mutable because referenc are immutable by default
+            .read_line(&mut user_word) // pass a reference to the user_word variable using & and make it mutable because references are immutable by default
             .expect("Failed to read line");
         let user_word: String = match user_word.trim().parse() {
             Ok(word) => word,

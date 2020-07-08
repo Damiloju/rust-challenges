@@ -10,11 +10,11 @@ fn main() {
     loop {
         let mut user_word = String::new(); // define a mutable variable using the mut keyword
         io::stdin()
-            .read_line(&mut user_word) // pass a reference to the guess variable using & and make it mutable because referenc are immutable by default
+            .read_line(&mut user_word) // pass a reference to the user_words variable using & and make it mutable because references are immutable by default
             .expect("Failed to read line");
         let user_word: String = match user_word.trim().parse() {
             Ok(word) => word,
-            Err(_) => break,
+            Err(_) => continue,
         };
 
         let mut v: Vec<&str> = user_word.split(' ').collect();
@@ -28,7 +28,7 @@ fn main() {
             println!("Enter 2 to print the list of employees in the company ordered by department or any number to continue");
             let mut choice = String::new(); // define a mutable variable using the mut keyword
             io::stdin()
-                .read_line(&mut choice) // pass a reference to the guess variable using & and make it mutable because referenc are immutable by default
+                .read_line(&mut choice) // pass a reference to the choice variable using & and make it mutable because references are immutable by default
                 .expect("Failed to read line");
             let choice: u32 = match choice.trim().parse() {
                 Ok(num) => num,
